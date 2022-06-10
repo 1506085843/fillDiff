@@ -91,13 +91,21 @@ public class DiffHandleUtils {
             builder.append(line);
             builder.append("\n");
         }
+        //如果打开html为空白界面，可能cdn加载githubCss失败 ,githubCss 链接可替换为 https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/github.min.css
+        String githubCss = "https://cdn.jsdelivr.net/gh/1506085843/fillDiff@master/src/main/resources/css/github.min.css";
+        //如果打开html为空白界面，可能cdn加载diff2htmlCss失败 ,diff2htmlCss 链接可替换为 https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css
+        String diff2htmlCss = "https://cdn.jsdelivr.net/gh/1506085843/fillDiff@master/src/main/resources/css/diff2html.min.css";
+        //如果打开html为空白界面，可能cdn加载diff2htmlJs失败, diff2htmlJs 链接可替换为 https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html-ui.min.js
+        String diff2htmlJs = "https://cdn.jsdelivr.net/gh/1506085843/fillDiff@master/src/main/resources/js/diff2html-ui.min.js";
+        //如果githubCss、diff2htmlCss、diff2htmlJs都加载失败可从 https://github.com/1506085843/fillDiff/tree/main/src/main/resources下载css和js手动引入到html
+
         String template = "<!DOCTYPE html>\n" +
                 "<html lang=\"en-us\">\n" +
                 "  <head>\n" +
                 "    <meta charset=\"utf-8\" />\n" +
-                "    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/github.min.css\" />\n" +
-                "     <link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css\" />\n" +
-                "    <script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html-ui.min.js\"></script>\n" +
+                "    <link rel=\"stylesheet\" href=\"" + githubCss + "\" />\n" +
+                "     <link rel=\"stylesheet\" type=\"text/css\" href=\"" + diff2htmlCss + "\" />\n" +
+                "    <script type=\"text/javascript\" src=\"" + diff2htmlJs + "\"></script>\n" +
                 "  </head>\n" +
                 "  <script>\n" +
                 "    const diffString = `\n" +
